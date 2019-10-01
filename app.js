@@ -1,13 +1,15 @@
 const express = require('express');
-const app = express();
 const connectDb = require('./config/db');
+const app = express();
 
 //Connect To MogoDb Atlas Database
 connectDb();
 
-app.get('/', (req, res) => {
-  res.send('Hello from STOCK API');
-});
+//Initialiaze middlewares
+app.use(express.json({ extended: false }));
+
+// Routes
+app.use('/api/users', require('./routes/users'));
 
 const PORT = 8000;
 app.listen(PORT, () => {
