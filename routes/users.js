@@ -5,12 +5,12 @@ const jsonToken = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const config = require('config');
 
-router.get('/', (req, res) => {
+router.get('/register', (req, res) => {
   res.send('Hi Users');
 });
 
 // Register New User
-router.post('/', async (req, res) => {
+router.post('/register', async (req, res) => {
   const { name, email, password } = req.body;
 
   try {
