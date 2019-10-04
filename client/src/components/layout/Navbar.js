@@ -7,9 +7,10 @@ const Navbar = ({ title, icon, token }) => {
   const isAuth = token ? true : false;
   const [auth, setAuth] = useState(isAuth);
 
-  // if (localStorage.token) {
-  //   setAuthToken(localStorage.token);
-  // }
+  useEffect(() => {
+    const isAuth = token ? true : false;
+    setAuth(isAuth);
+  }, [token]);
 
   const logOut = () => {
     localStorage.removeItem('token');

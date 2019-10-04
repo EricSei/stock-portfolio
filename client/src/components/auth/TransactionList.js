@@ -17,10 +17,10 @@ const data = [
   }
 ];
 
-const TransactionList = () => {
+const TransactionList = ({ owned }) => {
   return (
     <div>
-      {data.map(item => {
+      {owned.map(item => {
         return <TransactionItem item={item} />;
       })}
     </div>

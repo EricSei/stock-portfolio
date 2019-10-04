@@ -1,0 +1,27 @@
+{
+  "Meta Data": {
+    "1. Information": "Intraday (5min) open, high, low, close prices and volume",
+    "2. Symbol": "MSFT",
+    "3. Last Refreshed": "2019-10-01 16:00:00",
+    "4. Interval": "5min",
+    "5. Output Size": "Full size",
+    "6. Time Zone": "US/Eastern"
+  },
+  "Time Series (5min)": {
+    "2019-10-01 16:00:00": {
+      "1. open": "137.2500",
+      "2. high": "137.2800",
+      "3. low": "137.0100",
+      "4. close": "137.0600",
+      "5. volume": "1253332"
+    },
+    "2019-10-01 15:55:00": {
+      "1. open": "137.1800",
+      "2. high": "137.3200",
+      "3. low": "137.1200",
+      "4. close": "137.2550",
+      "5. volume": "332785"
+    },
+
+
+    ////"MONGO_URI": "mongodb+srv://admin:passwordpassword@cluster0-co9fd.mongodb.net/test?retryWrites=true&w=majority",

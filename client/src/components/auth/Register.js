@@ -1,6 +1,4 @@
 import React, { useState, useContext, useEffect } from 'react';
-//import AlertContext from '../../context/alert/alertContext';
-import AuthContext from '../../context/auth/authContext';
 import axios from 'axios';
 import history from '../../history';
 
@@ -20,6 +18,7 @@ const Register = props => {
       user
     );
     localStorage.setItem('token', res.data.token);
+    props.setToken(res.data.token);
     history.push('/');
   };
 

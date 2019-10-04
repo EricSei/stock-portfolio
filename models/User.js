@@ -25,8 +25,8 @@ const UserSchema = new mongoose.Schema({
     default: Date.now
   },
   owned: {
-    type: Array,
-    default: []
+    type: Object,
+    default: {}
   }
 });
 

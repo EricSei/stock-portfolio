@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import { Router, Route, Switch } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
 import Home from './components/pages/Home';
@@ -19,15 +19,31 @@ if (localStorage.token) {
 function App(props) {
   const [token, setToken] = useState(null);
 
+  useEffect(() => {
+    setToken(localStorage.getItem('token'));
+  }, []);
+
   return (
     <div className='App'>
       <Router history={history}>
         <Navbar token={token} />
         <Switch>
           <Route exact path='/' component={Home} />
-          <Route exact path='/portfolio' component={Portfolio} />
-          <Route exact path='/transactions' component={Transactions} />
-          <Route exact path='/register' component={Register} />
+          <Route
+            exact
+            path='/portfolio'
+            render={() => <Portfolio {...props} token={token} />}
+          />
+          <Route
+            exact
+            path='/transactions'
+            render={() => <Transactions {...props} token={token} />}
+          />
+          <Route
+            exact
+            path='/register'
+            render={() => <Register {...props} setToken={setToken} />}
+          />
           <Route
             exact
             path='/login'

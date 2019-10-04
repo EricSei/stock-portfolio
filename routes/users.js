@@ -4,9 +4,30 @@ const User = require('../models/User');
 const jsonToken = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const config = require('config');
+const auth = require('../middleware/auth');
 
 router.get('/register', (req, res) => {
   res.send('Hi Users');
+});
+
+//get balance API
+router.get('/balance', auth, (req, res, next) => {
+  const userId = req.user.id;
+
+  User.findOne({ _id: userId }, (err, foundUser) => {
+    if (err) return next(err);
+    res.json(foundUser.balance);
+  });
+});
+
+router.get('/owned', auth, (req, res, next) => {
+  const userId = req.user.id;
+
+  User.findOne({ _id: userId }, (err, foundUser) => {
+    if (err) next(err);
+
+    res.json(foundUser.owned);
+  });
 });
 
 // Register New User
