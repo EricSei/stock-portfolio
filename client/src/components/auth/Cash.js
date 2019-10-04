@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import alphavantage from '../../api/alphavantage';
-import { Z_STREAM_ERROR } from 'zlib';
-const Cash = ({ token, balance, setBalance }) => {
+
+const Cash = ({ token, balance, setBalance, fetchOwned, setOwned }) => {
   const [form, setForm] = useState({
     ticker: '',
     action: 'BUY',
     cost: 0,
     shares: 0
   });
+
   const { ticker, shares } = form;
 
   const [error, setError] = useState(null);
@@ -49,8 +50,10 @@ const Cash = ({ token, balance, setBalance }) => {
       );
 
       setBalance(balance - shares * cost);
+      fetchOwned(token);
+      window.location.reload();
     } catch (e) {
-      setError('Invalid Ticker');
+      if (e) setError('Invalid Ticker');
     }
   };
 

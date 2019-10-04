@@ -1,26 +1,17 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import TransactionItem from './TransactionItem';
 
-const data = [
-  {
-    action: 'BUY',
-    ticker: 'AAPL',
-    owned: 10,
-    cost: 1000
-  },
-  {
-    action: 'BUY',
-    ticker: 'FB',
-    owned: 2,
-    cost: 100
-  }
-];
-
 const TransactionList = ({ owned }) => {
+  const [myOwned, setMyOwned] = useState([]);
+
+  useEffect(() => {
+    setMyOwned(owned);
+  }, [owned]);
+
   return (
     <div>
-      {owned.map(item => {
+      {myOwned.map(item => {
         return <TransactionItem item={item} />;
       })}
     </div>

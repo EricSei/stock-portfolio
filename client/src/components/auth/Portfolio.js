@@ -47,7 +47,13 @@ const Portfolio = ({ token }) => {
         </div>
         <div className='col-6'>
           <h1>Cash- ${balance}</h1>
-          <Cash token={token} balance={balance} setBalance />
+          <Cash
+            token={token}
+            balance={balance}
+            setBalance={setBalance}
+            fetchOwned={fetchOwned}
+            setOwned={setOwned}
+          />
         </div>
       </div>
     </div>
