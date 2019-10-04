@@ -1,7 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import history from '../../history';
 import axios from 'axios';
+import setAuthToken from '../../utils/setAuthToken';
 
-const Login = () => {
+const Login = props => {
+  useEffect(() => {
+    if (localStorage.getItem('token')) {
+      history.push('/');
+    }
+
+    // eslint-disable-next-line
+  }, []);
+
   const [user, setUser] = useState({
     email: '',
     password: ''
@@ -12,7 +22,9 @@ const Login = () => {
   const handleLogin = async e => {
     e.preventDefault();
     const res = await axios.post('http://localhost:8000/api/auth/login', user);
-    console.log(res);
+    localStorage.setItem('token', res.data.token);
+    props.setToken(res.data.token);
+    history.push('/portfolio');
   };
 
   const handleChange = e => {

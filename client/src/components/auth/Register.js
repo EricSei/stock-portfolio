@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from 'react';
 //import AlertContext from '../../context/alert/alertContext';
 import AuthContext from '../../context/auth/authContext';
 import axios from 'axios';
+import history from '../../history';
 
 const Register = props => {
   const [user, setUser] = useState({
@@ -18,7 +19,8 @@ const Register = props => {
       'http://localhost:8000/api/users/register',
       user
     );
-    console.log(res);
+    localStorage.setItem('token', res.data.token);
+    history.push('/');
   };
 
   const handleChange = e => {

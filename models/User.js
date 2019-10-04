@@ -15,9 +15,18 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+
+  balance: {
+    type: Number,
+    default: 5000
+  },
   date: {
     type: Date,
     default: Date.now
+  },
+  owned: {
+    type: Array,
+    default: []
   }
 });
 

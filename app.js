@@ -14,6 +14,7 @@ app.use(express.json({ extended: false }));
 // Routes
 app.use('/api/users', require('./routes/users'));
 app.use('/api/auth', require('./routes/auth'));
+app.use('/api/transactions', require('./routes/transactions'));
 
 const PORT = 8000;
 app.listen(PORT, () => {
