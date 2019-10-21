@@ -1,5 +1,5 @@
 {
-  "MONGO_URI": "mongodb://localhost:27017/stock",
+  "MONGO_URI": "mongodb+srv://admin:passwordpassword@cluster0-co9fd.mongodb.net/test?retryWrites=true&w=majority",
   "JWT_SECRET": "secret",
   "STOCK_API_KEY": "NNQ0O9QYKCR2M9MF"
 }
