@@ -21,7 +21,7 @@ const Login = props => {
 
   const handleLogin = async e => {
     e.preventDefault();
-    const res = await axios.post('http://localhost:8000/api/auth/login', user);
+    const res = await axios.post('/api/auth/login', user);
     localStorage.setItem('token', res.data.token);
     props.setToken(res.data.token);
     history.push('/portfolio');

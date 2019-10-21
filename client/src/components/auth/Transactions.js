@@ -10,7 +10,7 @@ const Transactions = ({ token }) => {
 
   const fetchTransactions = async () => {
     const response = await axios.get(
-      'http://localhost:8000/api/transactions/all',
+      '/api/transactions/all',
       {
         headers: {
           'x-auth-token': token

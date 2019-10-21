@@ -18,7 +18,7 @@ const Portfolio = ({ token }) => {
 
   const fetchBlance = async token => {
     const response = await axios.get(
-      'http://localhost:8000/api/users/balance',
+      '/api/users/balance',
       {
         headers: {
           'x-auth-token': token
@@ -29,7 +29,7 @@ const Portfolio = ({ token }) => {
   };
 
   const fetchOwned = async token => {
-    const response = await axios.get('http://localhost:8000/api/users/owned', {
+    const response = await axios.get('/api/users/owned', {
       headers: {
         'x-auth-token': token
       }

@@ -40,7 +40,7 @@ const Cash = ({ token, balance, setBalance, fetchOwned, setOwned }) => {
       }
 
       axios.post(
-        'http://localhost:8000/api/transactions/create',
+        '/api/transactions/create',
         { ...form, cost },
         {
           headers: {

@@ -14,7 +14,7 @@ const Register = props => {
   const handleRegister = async e => {
     e.preventDefault();
     const res = await axios.post(
-      'http://localhost:8000/api/users/register',
+      '/api/users/register',
       user
     );
     localStorage.setItem('token', res.data.token);

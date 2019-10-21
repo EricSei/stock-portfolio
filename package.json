@@ -7,8 +7,9 @@
     "start": "node app.js",
     "app": "nodemon app.js",
     "client": "npm start --prefix client",
+    "client-install": "npm install --prefix client",
     "dev": "concurrently \"npm run app\" \"npm run client\"",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "keywords": [
     "MongoDb",

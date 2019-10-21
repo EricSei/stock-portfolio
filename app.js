@@ -1,5 +1,6 @@
 const express = require('express');
 const connectDb = require('./config/db');
+const path = require('path');
 const app = express();
 const cors = require('cors');
 
@@ -27,7 +28,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
   console.log(`STOCK API is running on port ${PORT}`);
 });
