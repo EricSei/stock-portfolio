@@ -1,15 +1,23 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import history from '../../history';
+import AuthContext from '../../context/AuthContex';
+import TokenContext from '../../context/TokenContext';
+
+
 
 const Register = props => {
+
+  const {  setIsAuth } = useContext(AuthContext);
+  const {  setToken } = useContext(TokenContext);
+
   const [user, setUser] = useState({
     name: '',
     email: '',
     password: ''
   });
 
-  const { name, email, password } = user;
+  //const { name, email, password } = user;
 
   const handleRegister = async e => {
     e.preventDefault();
@@ -18,8 +26,9 @@ const Register = props => {
       user
     );
     localStorage.setItem('token', res.data.token);
-    props.setToken(res.data.token);
-    history.push('/');
+    setToken(res.data.token);
+    setIsAuth(true);
+    history.push('/portfolio');
   };
 
   const handleChange = e => {
@@ -28,32 +37,38 @@ const Register = props => {
 
   return (
     <>
-      <h1>Register</h1>
-      <form onSubmit={handleRegister}>
-        <input
-          type='text'
-          name='name'
-          placeholder='enter name'
-          onChange={handleChange}
-          required
-        />
-        <input
-          type='email'
-          name='email'
-          placeholder='enter email'
-          onChange={handleChange}
-          required
-        />
-        <input
-          type='password'
-          name='password'
-          placeholder='enter password'
-          onChange={handleChange}
-          required
-        />
+      <div className="form-container ">
+        <h3>Register</h3>
+        <form onSubmit={handleRegister}>
+        <div className="form-group">
+          <input
+              type='text'
+              name='name'
+              placeholder='enter name'
+              onChange={handleChange}
+              required
+          />
+        </div>
+          
+          <input
+            type='email'
+            name='email'
+            placeholder='enter email'
+            onChange={handleChange}
+            required
+            className="form-control"
+          />
+          <input
+            type='password'
+            name='password'
+            placeholder='enter password'
+            onChange={handleChange}
+            required
+          />
 
-        <input type='submit' />
-      </form>
+          <input type='submit' />
+        </form>
+      </div>
     </>
   );
 };

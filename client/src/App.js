@@ -1,5 +1,6 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import { Router, Route, Switch } from 'react-router-dom';
+
 import Navbar from './components/layout/Navbar';
 import Home from './components/pages/Home';
 import Portfolio from './components/auth/Portfolio';
@@ -7,16 +8,23 @@ import Transactions from './components/auth/Transactions';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import Logout from './components/auth/Logout';
-import history from './history';
+import history from './history'; 
 
-import './App.css';
+import {AuthProvider} from './context/AuthContex';
+import {TokenProvider} from './context/TokenContext';
+
 import setAuthToken from './utils/setAuthToken';
 
+import './App.css';
+
+//Set Auth Token At Req Header
 if (localStorage.token) {
   setAuthToken(localStorage.token);
 }
 
-function App(props) {
+ const App = (props) => {
+   
+  //App Stores Token State
   const [token, setToken] = useState(null);
 
   useEffect(() => {
@@ -56,4 +64,11 @@ function App(props) {
   );
 }
 
-export default App;
+export default () => (
+  <AuthProvider>
+    <TokenProvider>
+      <App />
+    </TokenProvider>
+  </AuthProvider>
+)
+ 

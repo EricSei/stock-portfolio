@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import history from '../../history';
 import setAuthToken from '../../utils/setAuthToken';
 
+
 const Navbar = ({ title, icon, token }) => {
   const isAuth = token ? true : false;
   const [auth, setAuth] = useState(isAuth);

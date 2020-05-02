@@ -1,12 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
+import TokenContext from '../../context/TokenContext';
 
-const Transactions = ({ token }) => {
+const Transactions = ({token}) => {
+
   const [transactions, setTransactions] = useState([]);
+  //const { token } = useContext(TokenContext);
 
   useEffect(() => {
     fetchTransactions();
-  }, []);
+  }, [token]);
+
 
   const fetchTransactions = async () => {
     const response = await axios.get(
@@ -18,7 +22,6 @@ const Transactions = ({ token }) => {
       }
     );
     setTransactions(Object.values(response.data));
-    console.log(transactions);
   };
 
   return (

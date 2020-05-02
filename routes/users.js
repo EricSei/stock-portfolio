@@ -30,6 +30,16 @@ router.get('/owned', auth, (req, res, next) => {
   });
 });
 
+router.get('/user', auth, (req, res, next ) => {
+  const userId = req.user.id;
+
+  User.findOne({ _id: userId }, (err, foundUser) => {
+    if (err) next(err);
+
+    res.json(foundUser.name);
+  });
+});
+
 // Register New User
 router.post('/register', async (req, res) => {
   const { name, email, password } = req.body;

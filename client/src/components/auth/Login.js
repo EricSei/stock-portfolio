@@ -1,16 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import history from '../../history';
 import axios from 'axios';
 import setAuthToken from '../../utils/setAuthToken';
 
-const Login = props => {
-  useEffect(() => {
-    if (localStorage.getItem('token')) {
-      history.push('/');
-    }
+import AuthContext from '../../context/AuthContex';
 
-    // eslint-disable-next-line
-  }, []);
+const Login = props => {
+  
+  const { setIsAuth } = useContext(AuthContext);
+
+  // useEffect(() => {
+  //   if (localStorage.getItem('token')) {
+  //     history.push('/');
+  //   }
+
+  //   // eslint-disable-next-line
+  // }, []);
 
   const [user, setUser] = useState({
     email: '',
@@ -22,8 +27,11 @@ const Login = props => {
   const handleLogin = async e => {
     e.preventDefault();
     const res = await axios.post('/api/auth/login', user);
+
     localStorage.setItem('token', res.data.token);
     props.setToken(res.data.token);
+    
+    setIsAuth(true);
     history.push('/portfolio');
   };
 
@@ -32,8 +40,8 @@ const Login = props => {
   };
 
   return (
-    <div>
-      <h4>Log In</h4>
+    <div className='form-container'>
+      <h3>Log In</h3>
       <form onSubmit={handleLogin}>
         <input
           type='email'

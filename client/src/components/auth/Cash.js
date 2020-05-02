@@ -3,6 +3,7 @@ import axios from 'axios';
 import alphavantage from '../../api/alphavantage';
 
 const Cash = ({ token, balance, setBalance, fetchOwned, setOwned }) => {
+  
   const [form, setForm] = useState({
     ticker: '',
     action: 'BUY',
@@ -13,6 +14,8 @@ const Cash = ({ token, balance, setBalance, fetchOwned, setOwned }) => {
   const { ticker, shares } = form;
 
   const [error, setError] = useState(null);
+
+  
 
   const onChange = e => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -35,7 +38,7 @@ const Cash = ({ token, balance, setBalance, fetchOwned, setOwned }) => {
       const cost = Object.values(data)[0]['4. close'];
 
       if (cost * shares > balance) {
-        setError("You're too poor");
+        setError("Insefficient Funds.");
         return;
       }
 
@@ -51,7 +54,6 @@ const Cash = ({ token, balance, setBalance, fetchOwned, setOwned }) => {
 
       setBalance(balance - shares * cost);
       fetchOwned(token);
-      window.location.reload();
     } catch (e) {
       if (e) setError('Invalid Ticker');
     }
