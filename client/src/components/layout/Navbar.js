@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import history from '../../history';
-import setAuthToken from '../../utils/setAuthToken';
+//import setAuthToken from '../../utils/setAuthToken';
 
 
 const Navbar = ({ title, icon, token }) => {
@@ -21,6 +21,9 @@ const Navbar = ({ title, icon, token }) => {
 
   const authLinks = (
     <Fragment>
+      <li>
+        <Link to='/purchase'>Buy</Link>
+      </li>
       <li>
         <Link to='/portfolio'>Porfolio</Link>
       </li>

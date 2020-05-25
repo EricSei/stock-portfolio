@@ -9,7 +9,10 @@ const TransactionSchema = new mongoose.Schema({
     type: String,
     default: 'buy'
   },
-
+  date: {
+    type: Date,
+    default: Date.now
+  },
   ticker: {
     type: String
   },

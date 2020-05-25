@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Route, Redirect } from 'react-router-dom';
+//import { Route, Redirect } from 'react-router-dom';
 import axios from 'axios';
 
-import TransactionList from './TransactionList';
-import Cash from './Cash';
+import StockList from '../stock/StockList';
+import Purchase from '../stock/Purchase';
+import Charts from './Charts';
 
 const Portfolio = ({ token }) => {
   
@@ -11,12 +12,14 @@ const Portfolio = ({ token }) => {
   const [owned, setOwned] = useState([]);
   const [name, setName] = useState([]);
 
+  const [chartData, setChartData ] = useState({});
 
   useEffect(() => {
     if (token) {
       fetchBlance(token);
       fetchOwned(token);
       fetchName(token);
+      
     }
   }, [token, balance]);
 
@@ -53,25 +56,14 @@ const Portfolio = ({ token }) => {
   };
 
   return (
-    <div className='container'>
+    <div className='container grid-2'>
       <div className='row'>
-        <div className='col-6'>
-        <h2>
-            Portfolio 
-             <span> <i> {name} </i>  </span>
-        </h2>
-          <TransactionList owned={owned} />
+        <div className='col-10'>
+          <StockList owned={owned} />
         </div>
-        <div className='col-6'>
-          <h2>Cash- ${balance}</h2>
-          <Cash
-            token={token}
-            balance={balance}
-            setBalance={setBalance}
-            fetchOwned={fetchOwned}
-            setOwned={setOwned}
-          />
-        </div>
+      </div>
+      <div className='col-10'>
+        <Charts balance={balance} owned={owned} />
       </div>
     </div>
   );

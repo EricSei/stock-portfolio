@@ -3,11 +3,16 @@ import { Router, Route, Switch } from 'react-router-dom';
 
 import Navbar from './components/layout/Navbar';
 import Home from './components/pages/Home';
-import Portfolio from './components/auth/Portfolio';
-import Transactions from './components/auth/Transactions';
+
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import Logout from './components/auth/Logout';
+
+import Portfolio from './components/portfolio/Portfolio';
+import Transactions from './components/stock/Transactions';
+import Purchase from './components/stock/Purchase';
+
+
 import history from './history'; 
 
 import {AuthProvider} from './context/AuthContex';
@@ -37,6 +42,11 @@ if (localStorage.token) {
         <Navbar token={token} />
         <Switch>
           <Route exact path='/' component={Home} />
+          <Route
+            exact
+            path='/purchase'
+            render={() => <Purchase {...props} token={token} />}
+          />
           <Route
             exact
             path='/portfolio'

@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import alphavantage from '../../api/alphavantage';
+import SearchStock from './SearchStock';
 
-const Cash = ({ token, balance, setBalance, fetchOwned, setOwned }) => {
+const Purchase = ({ token, balance, setBalance, fetchOwned, setOwned }) => {
   
   const [form, setForm] = useState({
     ticker: '',
@@ -14,8 +15,6 @@ const Cash = ({ token, balance, setBalance, fetchOwned, setOwned }) => {
   const { ticker, shares } = form;
 
   const [error, setError] = useState(null);
-
-  
 
   const onChange = e => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -66,27 +65,37 @@ const Cash = ({ token, balance, setBalance, fetchOwned, setOwned }) => {
     //   form
     // );
     buyStock(form.ticker);
+    
   };
 
   return (
-    <form onSubmit={onSubmit}>
-      {error ? <div>{error}</div> : null}
-      <input
-        type='text'
-        name='ticker'
-        placeholder='Type Ticker'
-        onChange={onChange}
-      />
-      <input
-        type='number'
-        name='shares'
-        placeholder='Type Quantity'
-        onChange={onChange}
-      />
-      <br></br>
-      <input type='submit' value='Buy' className='btn btn-lg btn-primary' />
-    </form>
+    <div className='container grid-2'>
+      <div className="">
+        <SearchStock />
+      </div>
+      <div className=''>
+        <form onSubmit={onSubmit} >
+          {error ? <div>{error}</div> : null}
+          <input
+            type='text'
+            name='ticker'
+            placeholder='Type Ticker'
+            onChange={onChange}
+          />
+          <input
+            type='number'
+            name='shares'
+            placeholder='Type Quantity'
+            onChange={onChange}
+          />
+          <br></br>
+          <input type='submit' value='Buy' className='btn btn-lg btn-success'  />
+        </form>
+      </div>
+      
+      
+    </div>
   );
 };
 
-export default Cash;
+export default Purchase;

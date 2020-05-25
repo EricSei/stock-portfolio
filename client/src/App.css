@@ -357,6 +357,26 @@ table th {
   background: var(--light-color);
 }
 
+.transaction {
+  margin-top: 20px;
+  border: 1px solid #ddd;
+  padding: 8px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.transaction tr:nth-child(even){background-color: #f2f2f2;}
+
+.transaction tr:hover {background-color: #ddd;}
+
+.transaction th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+
 /* Navbar */
 .navbar {
   display: flex;

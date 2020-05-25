@@ -41,24 +41,29 @@ const Login = props => {
 
   return (
     <div className='form-container'>
-      <h3>Log In</h3>
+      <h1> Account <span className="text-success">Log In </span></h1>
       <form onSubmit={handleLogin}>
-        <input
-          type='email'
-          name='email'
-          placeholder='enter email'
-          onChange={handleChange}
-          required
-        />
-        <input
-          type='password'
-          name='password'
-          placeholder='enter password'
-          onChange={handleChange}
-          required
-        />
-
-        <input type='submit' />
+        <div className='form-group'>
+            <label htmlFor='name'> Email Address </label>
+            <input
+              type='email'
+              name='email'
+              placeholder='enter email'
+              onChange={handleChange}
+              required
+            />
+        </div>
+        <div className='form-group'>
+          <label htmlFor='name'> Password </label>
+            <input
+              type='password'
+              name='password'
+              placeholder='enter password'
+              onChange={handleChange}
+              required
+            />
+        </div>
+        <input type='submit' value='Login' className='btn btn-success btn-block' />
       </form>
     </div>
   );
