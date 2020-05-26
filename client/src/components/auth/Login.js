@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import history from '../../history';
 import axios from 'axios';
-import setAuthToken from '../../utils/setAuthToken';
+//import setAuthToken from '../../utils/setAuthToken';
 
 import AuthContext from '../../context/AuthContex';
 
@@ -21,8 +21,6 @@ const Login = props => {
     email: '',
     password: ''
   });
-
-  const { email, password } = user;
 
   const handleLogin = async e => {
     e.preventDefault();

@@ -61,6 +61,12 @@ img {
   margin-bottom: 1rem;
 }
 
+.title {
+  font-size: 2rem;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
 .lead {
   font-size: 1.5rem;
   margin-bottom: 1rem;

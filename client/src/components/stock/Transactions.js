@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
-//import TokenContext from '../../context/TokenContext';
+import TokenContext from '../../context/TokenContext';
 
 const Transactions = ({token}) => {
 
@@ -27,7 +27,7 @@ const Transactions = ({token}) => {
   return (
     <div className="container">
       <div className="lead text-center">
-        Stock Transactions
+        Transactions History
       </div>
       <table className="transaction ">
         <tr >

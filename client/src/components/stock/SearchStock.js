@@ -34,7 +34,7 @@ const SearchStock = () => {
     }catch(error){
       if(error){
         setError('Invalid Ticker');
-        console.log(error)
+        //console.log(error)
       }
     }
     

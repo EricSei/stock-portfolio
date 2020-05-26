@@ -1,6 +1,5 @@
 import React, { useState, useEffect, Fragment } from "react";
 import { Bar, Line, Pie } from "react-chartjs-2";
-import axios from "axios";
 
 const Charts = ({owned}) => {
 
@@ -8,10 +7,13 @@ const Charts = ({owned}) => {
  
   const [myOwned, setMyOwned] = useState([]);
 
+  const [typeChart, setTypeChart ] = useState('bar');
+
   useEffect(() => {
     setMyOwned(owned);
     chart();
-  }, [owned]);
+    // eslint-disable-next-line
+  }, [owned, typeChart ]);
 
   const chart = () => {
     let tickers = [];
@@ -21,7 +23,7 @@ const Charts = ({owned}) => {
       tickers.push(item.ticker);
       worth.push(item.worth);
     })
-   
+
     setChartData({
       labels: tickers,//array
       datasets: [
@@ -46,42 +48,88 @@ const Charts = ({owned}) => {
   const barChart = (
     <Fragment>
       <Bar
-            data={chartData}
-            options={{
-              responsive: true,
-              title: { text: "Bar", display: true, fontSize: 25 },
-              legend:{
-                display: true,
-                position: 'right'
-              }
-                
-            }}
+        data={chartData}
+        options={{
+          responsive: true,
+          title: { text: "Bar", display: true, fontSize: 25 },
+          legend:{
+            display: true,
+            position: 'right'
+          }
+            
+        }}
           />
     </Fragment>)
 
 const pieChart = (
   <Fragment>
     <Pie
-          data={chartData}
-          options={{
-            responsive: true,
-            title: { text: "Pie", display: true, fontSize: 25 },
-            legend:{
-              display: true,
-              position: 'right'
-            }
-              
-          }}
+        data={chartData}
+        options={{
+          responsive: true,
+          title: { text: "Pie", display: true, fontSize: 25 },
+          legend:{
+            display: true,
+            position: 'right'
+          }
+        }}
     />
   </Fragment>)
 
+const lineChart = (
+  <Fragment>
+    <Line
+        data={chartData}
+        options={{
+          responsive: true,
+          title: { text: "Line", display: true, fontSize: 25 },
+          legend:{
+            display: true,
+            position: 'right'
+          }
+        }}
+    />
+  </Fragment>)
+
+  const onHandleClick = (e) =>{
+    if(e.target.name == 'bar'){
+      setTypeChart('bar');
+    }
+    if(e.target.name == 'pie'){
+      setTypeChart('pie');
+    }
+    if(e.target.name == 'line'){
+      setTypeChart('line');
+    }
+    return 'bar';
+  }
+
+  const renderSwitch = (param) => {
+    switch(param) {
+      case 'bar':
+        return barChart;
+      case 'pie':
+          return pieChart;
+      case 'line':
+            return lineChart;
+      default:
+        return barChart;
+    }
+  }
+
   return (
-    <div className="container">
       <div>
-        {barChart}
-        {pieChart}
+        <div>
+        </div>
+        <div>
+          <input type='button' value='Bar' name='bar' className='btn btn-success' onClick={onHandleClick}></input>
+          <input type='button' value='pie' name='pie' className='btn btn-success' onClick={onHandleClick}></input>
+          <input type='button' value='line' name='line' className='btn btn-success' onClick={onHandleClick}></input>
+          {
+            renderSwitch(typeChart)
+          }
+        </div>
       </div>
-    </div>
   );
 };
 

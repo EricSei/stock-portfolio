@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import alphavantage from '../../api/alphavantage';
 import SearchStock from './SearchStock';
@@ -12,7 +12,7 @@ const Purchase = ({ token, balance, setBalance, fetchOwned, setOwned }) => {
     shares: 0
   });
 
-  const { ticker, shares } = form;
+  const { shares } = form;
 
   const [error, setError] = useState(null);
 
@@ -55,6 +55,7 @@ const Purchase = ({ token, balance, setBalance, fetchOwned, setOwned }) => {
       fetchOwned(token);
     } catch (e) {
       if (e) setError('Invalid Ticker');
+      console.log(e);
     }
   };
 

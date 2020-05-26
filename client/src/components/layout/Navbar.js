@@ -25,7 +25,7 @@ const Navbar = ({ title, icon, token }) => {
         <Link to='/purchase'>Buy</Link>
       </li>
       <li>
-        <Link to='/portfolio'>Porfolio</Link>
+        <Link to='/portfolio'>Portfolio</Link>
       </li>
       <li>
         <Link to='/transactions'>Transactions</Link>
