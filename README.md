@@ -4,7 +4,7 @@
 
 ## Live Demo
 
-Clikc this Link --> [Simple Stock](https://simple-stock-portfolio.herokuapp.com/)
+Click this Link --> [Simple Stock](https://simple-stock-portfolio.herokuapp.com/{:target="\_blank"}
 
 ## Technology Stack Use
 
