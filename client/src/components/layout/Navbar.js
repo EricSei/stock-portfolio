@@ -1,8 +1,6 @@
-import React, { Fragment, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import history from '../../history';
-//import setAuthToken from '../../utils/setAuthToken';
-
+import React, { Fragment, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import history from "../../history";
 
 const Navbar = ({ title, icon, token }) => {
   const isAuth = token ? true : false;
@@ -14,21 +12,21 @@ const Navbar = ({ title, icon, token }) => {
   }, [token]);
 
   const logOut = () => {
-    localStorage.removeItem('token');
+    localStorage.removeItem("token");
     setAuth(false);
-    history.push('/logout');
+    history.push("/logout");
   };
 
   const authLinks = (
     <Fragment>
       <li>
-        <Link to='/purchase'>Buy</Link>
+        <Link to="/purchase">Buy</Link>
       </li>
       <li>
-        <Link to='/portfolio'>Portfolio</Link>
+        <Link to="/portfolio">Portfolio</Link>
       </li>
       <li>
-        <Link to='/transactions'>Transactions</Link>
+        <Link to="/transactions">Transactions</Link>
       </li>
       <li>
         <Link onClick={logOut}>Sign Out</Link>
@@ -39,19 +37,19 @@ const Navbar = ({ title, icon, token }) => {
   const guestLinks = (
     <Fragment>
       <li>
-        <Link to='/'>Home</Link>
+        <Link to="/">Home</Link>
       </li>
       <li>
-        <Link to='/register'>Register</Link>
+        <Link to="/register">Register</Link>
       </li>
       <li>
-        <Link to='/login'>Log In</Link>
+        <Link to="/login">Log In</Link>
       </li>
     </Fragment>
   );
 
   return (
-    <div className='navbar bg-success'>
+    <div className="navbar bg-success">
       <h1>
         <i className={icon}></i> {title}
       </h1>
@@ -61,8 +59,8 @@ const Navbar = ({ title, icon, token }) => {
 };
 
 Navbar.defaultProps = {
-  title: 'Stock Porfolio',
-  icon: 'fas fa-coins'
+  title: "Stock Porfolio",
+  icon: "fas fa-coins",
 };
 
 export default Navbar;
