@@ -1,9 +1,9 @@
-import React from 'react';
+import React from "react";
 
 const Logout = () => {
   return (
-    <div className='container'>
-      <h1> You are logged out. Thanks for using the app. </h1>
+    <div className="container">
+      <h2> You've been logged out. Thanks for using the app. </h2>
     </div>
   );
 };

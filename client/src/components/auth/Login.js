@@ -25,6 +25,7 @@ const Login = (props) => {
   };
 
   const handleChange = (e) => {
+    // console.log(e.target.value);
     setUser({ ...user, [e.target.name]: e.target.value });
   };
 
